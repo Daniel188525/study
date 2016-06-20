@@ -19,7 +19,7 @@ import com.siebre.service.BaseService;
 @Configuration
 @EnableScheduling
 @ImportResource({ "classpath:/config/application-basic.xml" })
-@Import({ DatabaseConfig.class, JobConfig.class, VelocityConfig.class })
+@Import({ DatabaseConfig.class, JobConfig.class })
 public class AppConfig {
 	@Bean
 	BaseService baseService() {

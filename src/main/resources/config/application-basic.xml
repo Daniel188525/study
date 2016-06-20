@@ -14,8 +14,9 @@
 		depends-on="environment">
 		<property name="locations">
 			<list>
-				<value>classpath:config/jdbc.properties</value>
+				<value>classpath:/config/jdbc.properties</value>
 				<value>classpath:/config/bean-init.properties</value>
+				<!-- <value>classpath:/config/velocity.properties</value> -->
 			</list>
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />

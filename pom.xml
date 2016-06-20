@@ -173,9 +173,26 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+		<dependency>
+      		<groupId>org.apache.velocity</groupId>
+      		<artifactId>velocity</artifactId>
+      		<version>1.7</version>
+    	</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>study</finalName>
+		
+		<plugins>
+      		<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-compiler-plugin</artifactId>
+        		<version>3.1</version>
+        		<configuration>
+          			<source>1.6</source>
+          			<target>1.6</target>
+        		</configuration>
+      		</plugin>
+    	</plugins>
 	</build>
 </project>

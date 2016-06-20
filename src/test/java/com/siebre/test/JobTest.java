@@ -18,10 +18,10 @@ public class JobTest {
 	public void test() {
 		System.out.println("Job test......" + new Date());
 
-		try {
+		/*try {
 			System.in.read();// 按任意键退出
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
+		} */
 	}
 }
