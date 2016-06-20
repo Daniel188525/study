@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.1.xsd
+			http://www.springframework.org/schema/task 
+       		http://www.springframework.org/schema/task/spring-task-4.1.xsd ">
+
+	<bean id="simpleJobDetailDB"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.siebre.job.SpringQuartzDB" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="simpleTriggerDB"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="simpleJobDetailDB" />
+		<property name="cronExpression" value="0/3 * * * * ?" />
+	</bean>
+
+	<bean id="jobFactory"
+		class="org.springframework.scheduling.quartz.SpringBeanJobFactory" />
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean"
+		lazy-init="false">
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="quartzTransactionManager" />
+		<property name="overwriteExistingJobs" value="true" />
+		<property name="triggers">
+			<list>
+				<ref bean="simpleTriggerDB" />
+			</list>
+		</property>
+		<property name="schedulerContextAsMap">
+			<map>
+				<entry key="baseService" value-ref="baseService" />
+			</map>
+		</property>
+		<property name="jobFactory" ref="jobFactory" />
+	</bean>
+
+</beans>
