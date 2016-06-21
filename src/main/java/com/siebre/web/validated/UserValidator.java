@@ -7,10 +7,15 @@ import org.springframework.validation.Validator;
 
 import com.siebre.entity.User;
 
+/**
+ * Spring validator
+ * @author daniel.zhao
+ *
+ */
 public class UserValidator implements Validator {
 
 	/*
-	 * user id validator
+	 * user validator
 	 * 
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
@@ -19,10 +24,10 @@ public class UserValidator implements Validator {
 	}
 
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmpty(errors, "name", null, "name is empty");
+		ValidationUtils.rejectIfEmpty(errors, "name", null, "username is empty");
 		User user = (User) target;
-		if (StringUtils.isBlank(user.getName())) {
-			errors.rejectValue("name", null, "name is empty.");
+		if (StringUtils.isNotBlank(user.getName()) && user.getName().length() > 16) {
+			errors.rejectValue("name", "user.name.length", "username length too long");
 		}
 
 	}

@@ -3,6 +3,8 @@ package com.siebre.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @SuppressWarnings("serial")
