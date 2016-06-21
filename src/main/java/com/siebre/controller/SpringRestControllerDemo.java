@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siebre.entity.UserDetails;
-import com.siebre.web.validated.LongValidated;
+import com.siebre.web.validated.UserValidator;
 
 @RestController
 public class SpringRestControllerDemo {
@@ -18,7 +18,7 @@ public class SpringRestControllerDemo {
 			"application/xml", "application/json" })
 	@ResponseStatus(HttpStatus.OK)
 	public UserDetails getUser(
-			@PathVariable("id") @Validated(value = { LongValidated.class }) Long id) {
+			@PathVariable("id") @Validated(value = { UserValidator.class }) Long id) {
 		UserDetails userDetails = new UserDetails();
 		userDetails.setUserName("zhaohongshuai");
 		userDetails.setEmail("Daniel@gmail.com");

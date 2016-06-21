@@ -1,36 +1,37 @@
 package com.siebre.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.siebre.entity.User;
+import com.siebre.web.validated.UserValidator;
 
-/**
- * 
- * @ClassName: UserController
- * @Description: 
- * @author ZhaoHongshuai
- * @date 2016-5-25 ÏÂÎç2:47:43
- * @version 1.0
- */
-@RestController  
-@RequestMapping("/user") 
+@Controller
 public class UserController {
 
-	@RequestMapping("/{id}")  
-    public ModelAndView view(@PathVariable("id") Long id, HttpServletRequest req) {  
-        User user = new User();  
-        user.setId(id);  
-        user.setName("zhang");  
-  
-        ModelAndView mv = new ModelAndView();  
-        mv.addObject("user", user);  
-        mv.setViewName("user/view");  
-        return mv;  
-    }
+	@InitBinder
+	public void initBinder(DataBinder binder) {
+		binder.setValidator(new UserValidator());
+	}
 	
+	@RequestMapping("/welcome")
+	public String welcome() {
+		return "welcome";
+	}
+	
+	@RequestMapping("/login")  
+    public String login(@Valid User user, BindingResult result, HttpServletRequest request) {  
+       if (result.hasErrors())  
+           return "redirect:user/login";
+       
+       request.getSession().setAttribute("user", user);
+       
+       return "redirect:/welcome";  
+    }
 }

@@ -51,6 +51,30 @@
 		<property name="maxUploadSize" value="1048576" />
 	</bean>
 	
+	<!-- <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">  
+        <property name="basenames" value="classpath:/i18n/messages" />
+        <property name="useCodeAsDefaultMessage" value="true" />
+    </bean> -->
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+	        <list>
+	            <value>classpath:/i18n/messages</value>
+	        </list>
+        </property>
+        <property name="cacheSeconds" value="3600"/>
+        <property name="useCodeAsDefaultMessage" value="true" />
+    </bean>
+    
+    <bean id="handlerExceptionResolver"
+    	class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    	<property name="exceptionMappings">
+	        <props>
+	            <prop key="com.siebre.exception.AuthorizationException">redirect:/login</prop>
+	        </props>
+    	</property>
+	</bean>
+
 	<mvc:interceptors>
 	
 		<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 --> 
@@ -62,6 +86,17 @@
 			<bean class="com.siebre.interceptor.AllHandlerInterceptor" />
 		</mvc:interceptor>
 		
+		<mvc:interceptor>
+        	<mvc:mapping path="/*" />
+	        <bean class="com.siebre.interceptor.SecurityInterceptor">
+	            <property name="excludedUrls">
+	                <list>
+	                    <value>/login.do</value>
+	                </list>
+	            </property>
+	        </bean>
+    	</mvc:interceptor>
+    
 	</mvc:interceptors>
 	
 </beans>
