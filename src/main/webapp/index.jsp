@@ -6,7 +6,7 @@
 <html>
 <body>
 	<h2>user login</h2>
-	<sf:form id="form" action="/study/login.do" modelAttribute="user" method="post" >
+	<sf:form id="form_login" action="/study/login.do" modelAttribute="user" method="post" >
 		<label for="id">id:</label>
 		<input type="text" id="id" name="id" />
 		<br />

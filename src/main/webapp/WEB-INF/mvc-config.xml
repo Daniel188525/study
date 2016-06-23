@@ -86,7 +86,7 @@
 			<bean class="com.siebre.interceptor.AllHandlerInterceptor" />
 		</mvc:interceptor>
 		
-		<mvc:interceptor>
+		<!-- <mvc:interceptor>
         	<mvc:mapping path="/*" />
 	        <bean class="com.siebre.interceptor.SecurityInterceptor">
 	            <property name="excludedUrls">
@@ -95,7 +95,7 @@
 	                </list>
 	            </property>
 	        </bean>
-    	</mvc:interceptor>
+    	</mvc:interceptor> -->
     
 	</mvc:interceptors>
 	

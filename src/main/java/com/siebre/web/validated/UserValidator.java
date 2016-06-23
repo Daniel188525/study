@@ -23,8 +23,11 @@ public class UserValidator implements Validator {
 		return User.class.equals(clazz);
 	}
 
+	/**
+	 * 校验是需要注意日期格式问题,否则一直有error
+	 */
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmpty(errors, "name", null, "username is empty");
+		//ValidationUtils.rejectIfEmpty(errors, "name", null, "username is empty");
 		User user = (User) target;
 		if (StringUtils.isNotBlank(user.getName()) && user.getName().length() > 16) {
 			errors.rejectValue("name", "user.name.length", "username length too long");
