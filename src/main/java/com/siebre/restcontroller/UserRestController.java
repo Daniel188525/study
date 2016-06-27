@@ -29,7 +29,7 @@ public class UserRestController {
   
         ModelAndView mv = new ModelAndView();  
         mv.addObject("user", user);  
-        mv.setViewName("user/view");  
+        mv.setViewName("user/login.jsp");  
         return mv;  
     }
 	

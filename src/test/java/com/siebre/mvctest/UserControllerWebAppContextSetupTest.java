@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -23,8 +22,8 @@ import com.siebre.config.MvcConfig;
 import com.siebre.log4j.JUnit4ClassRunner;
 
 //×¢½â·ç¸ñ  
-//@RunWith(JUnit4ClassRunner.class)
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(JUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration(value = "src/main/webapp") //default value = "src/main/webapp"
 @ContextHierarchy({
 		@ContextConfiguration(name = "parent", classes = AppConfig.class),
@@ -46,7 +45,7 @@ public class UserControllerWebAppContextSetupTest {
 	public void testView() throws Exception {
 		MvcResult result = mockMvc
 				.perform(MockMvcRequestBuilders.get("/user/1"))
-				.andExpect(MockMvcResultMatchers.view().name("user/view"))
+				.andExpect(MockMvcResultMatchers.view().name("user/login.jsp"))
 				.andExpect(MockMvcResultMatchers.model().attributeExists("user"))
 				.andDo(MockMvcResultHandlers.print()).andReturn();
 

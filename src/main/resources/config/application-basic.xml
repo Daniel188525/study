@@ -9,18 +9,18 @@
 			http://www.springframework.org/schema/task 
        		http://www.springframework.org/schema/task/spring-task-4.1.xsd ">
 
-	<bean id="propertySourcesPlaceholder"
+	<!-- xml 方式初始化propertySource -->
+	<!-- <bean id="propertySourcesPlaceholder"
 		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer"
 		depends-on="environment">
 		<property name="locations">
 			<list>
 				<value>classpath:/config/jdbc.properties</value>
 				<value>classpath:/config/bean-init.properties</value>
-				<!-- <value>classpath:/config/velocity.properties</value> -->
 			</list>
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="order" value="1" />
-	</bean>
+	</bean> -->
 
 </beans>

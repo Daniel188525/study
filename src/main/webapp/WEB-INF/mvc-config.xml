@@ -18,43 +18,11 @@
 
 	<!-- 设置使用注解的类所在的jar包 -->
 	<context:component-scan base-package="com.siebre.controller" />
-
-	<!-- 完成请求和注解POJO的映射 -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-	
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" /> -->  
-    
-    <!-- <bean id="contentManager"  
-        class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">  
-        <property name="favorPathExtension" value="true"/>  
-        <property name="ignoreAcceptHeader" value="true" />  
-        <property name="defaultContentType" value="text/html" />  
-        <property name="useJaf" value="false"/>  
-        <property name="mediaTypes">  
-            <map>  
-                <entry key="json" value="application/json" />  
-                <entry key="html" value="text/html" />  
-                <entry key="xml" value="application/xml" />  
-            </map>  
-        </property>  
-    </bean> -->
-    
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- maximum file size (1 megabyte) -->
 		<property name="maxUploadSize" value="1048576" />
 	</bean>
-	
-	<!-- <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">  
-        <property name="basenames" value="classpath:/i18n/messages" />
-        <property name="useCodeAsDefaultMessage" value="true" />
-    </bean> -->
     
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">

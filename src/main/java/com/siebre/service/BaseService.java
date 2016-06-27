@@ -2,8 +2,8 @@ package com.siebre.service;
 
 public class BaseService {
 
-	public BaseService() {
-		
+	public BaseService(String url) {
+		System.out.println("baseService dataBaseUrl is " + url);
 	}
 	
 	public void process() {

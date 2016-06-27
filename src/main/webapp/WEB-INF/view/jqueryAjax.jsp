@@ -22,7 +22,7 @@ $(document).ready(function(){
 	$("#button").click(function() {
 		$.ajax({
 			   type: 'GET',
-			   url: baseUrl + 'getUser' ,
+			   url: baseUrl + 'getUser?oid=' + 1212  ,
 			   dataType: "json",
 			   success: function(data) { //callback
 				   $("#id").val(data.id);
