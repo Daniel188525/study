@@ -1,5 +1,6 @@
 package com.siebre.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -19,10 +20,16 @@ import com.siebre.service.BaseService;
 @Configuration
 @EnableScheduling
 @ImportResource({ "classpath:/config/application-basic.xml" })
-@Import({ DatabaseConfig.class, JobConfig.class })
+@Import({ PropertySourceConfig.class, DatabaseConfig.class, JobConfig.class, MyViewResolverConfig.class })
 public class AppConfig {
+	
+	/**
+	 * ${format.config.date} 在JAVA类中不能存在空格，否则会出现无法解析问题；XML注入可以存在空格
+	 * @param url
+	 * @return
+	 */
 	@Bean
-	BaseService baseService() {
-		return new BaseService();
+	BaseService baseService(@Value("${database.url}") String url) {
+		return new BaseService(url);
 	}
 }

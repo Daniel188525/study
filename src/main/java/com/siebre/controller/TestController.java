@@ -1,23 +1,40 @@
 package com.siebre.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.siebre.entity.User;
+import com.siebre.web.validated.UserValidator;
 
 @Controller
 public class TestController extends BaseController {
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		//添加一个日期类型编辑器，也就是需要日期类型的时候，怎么把字符串转化为日期类型 
+		log.info("TestController initBinder......");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+        dateFormat.setLenient(false);  
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));  
+        //添加一个spring自带的validator  
+        binder.setValidator(new UserValidator());
+	}
+	
 	/**
 	 * 调用@RequestMapping的方法之前,为request对象的model里put("user",user)
 	 * @return
