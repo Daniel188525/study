@@ -3,12 +3,14 @@ package com.siebre.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@SuppressWarnings("serial")
 public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4004714623265818834L;
 
 	private Long id;  
 	

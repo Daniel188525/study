@@ -20,7 +20,13 @@ import com.siebre.service.BaseService;
 @Configuration
 @EnableScheduling
 @ImportResource({ "classpath:/config/application-basic.xml" })
-@Import({ PropertySourceConfig.class, DatabaseConfig.class, JobConfig.class, MyViewResolverConfig.class })
+@Import({ 
+	PropertySourceConfig.class, 
+	DatabaseConfig.class, 
+	JobConfig.class, 
+	MyViewResolverConfig.class,
+	MyBatisConfig.class
+	})
 public class AppConfig {
 	
 	/**
