@@ -1,10 +1,10 @@
-package com.siebre.dao;
+package com.siebre.service;
 
 import java.util.List;
 
 import com.siebre.entity.User;
 
-public interface UserDao {
+public interface UserService {
 
 	public int addUser(User user);
 	
@@ -15,4 +15,5 @@ public interface UserDao {
 	public User getUserById(int id);
 	
 	public List<User> getAllUsers();
+	
 }
