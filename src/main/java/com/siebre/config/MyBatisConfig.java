@@ -1,11 +1,12 @@
 package com.siebre.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Import;
 
 @Configuration
-@ImportResource({ 
-	"classpath:/config/application-mybatis-mapper.xml" 
+@Import({ 
+	MyBatisAnnotationConfig.class/*,
+	MyBatisXmlConfig.class*/
 	})
 public class MyBatisConfig {
 	

@@ -9,6 +9,11 @@ import org.apache.ibatis.annotations.Update;
 
 import com.siebre.entity.User;
 
+/**
+ * mybatis mapperInterface
+ * @author daniel.zhao
+ *
+ */
 public interface UserMapper {
 
 	@Insert(value = "insert into users(name, age) values(#{name}, #{age})")
