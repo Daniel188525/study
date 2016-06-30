@@ -26,7 +26,7 @@ public class TestCRUDByAnnotationMapper {
 	@Test
     public void testAdd(){
         User user = new User();
-        user.setName("用户xdp01");
+        user.setName("用户xdp03");
         user.setAge(20);
         int add = userService.addUser(user);
         log.debug("add user result " + add);

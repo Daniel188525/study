@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.siebre.entity.mapper.OrdersMapper">
+<mapper namespace="com.siebre.mapper.OrdersMapper">
 	
 	<parameterMap type="Orders" id="parameterOrdersMap">
 		<parameter property="id" />
@@ -26,7 +26,7 @@
 		<result property="customerId" column="customer_id" />
 		<association property="customer" javaType="Customer"
 			column="customer_id"
-			select="com.siebre.mapping.CustomerMapper.getCustomer" />
+			select="com.siebre.mapper.CustomerMapper.getCustomer" />
 	</resultMap>
 	
 	<select id="getOrders" resultMap="ordersMap" parameterType="int">

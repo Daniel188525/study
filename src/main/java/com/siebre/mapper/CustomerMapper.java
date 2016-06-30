@@ -1,4 +1,4 @@
-package com.siebre.mapping;
+package com.siebre.mapper;
 
 import com.siebre.entity.Customer;
 

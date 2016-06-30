@@ -48,4 +48,9 @@ public class Orders implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	@Override
+	public String toString() {
+		return "order[id= " + id + ", code=" + code + ", customerId=" + customerId + "]";
+	}
 }

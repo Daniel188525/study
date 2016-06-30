@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.siebre.entity.mapper.CustomerMapper">
+<mapper namespace="com.siebre.mapper.CustomerMapper">
+	
+	<!-- 定义可重用的SQL代码段，可在select中使用include引用 -->
+	<sql id="customerColumns">id,address,postcode,sex,cname</sql>
+	
 	<parameterMap type="Customer" id="parameterCustomerMap">
 		<parameter property="id" />
 		<parameter property="address" />
@@ -9,7 +13,8 @@
 		<parameter property="sex" />
 		<parameter property="cname" />
 	</parameterMap>
-
+	
+	<!-- 若数据库支持主键的自动生成，则可以使用 useGeneratedKeys="true" keyProperty="id" -->
 	<insert id="insertCustomer" parameterMap="parameterCustomerMap">
 		<selectKey keyProperty="id" resultType="int" order="AFTER">
 			SELECT @@IDENTITY AS ID
@@ -30,7 +35,7 @@
 		<result property="sex" column="sex" />
 		<result property="cname" column="cname" />
 		<collection property="orders" column="id"
-			select="com.siebre.mapping.OrdersMapper.getOrdersById" />
+			select="com.siebre.mapper.OrdersMapper.getOrdersById" /><!-- nameSpace+selectid -->
 	</resultMap>
 
 	<select id="getCustomer" resultMap="resultCustomerMap"

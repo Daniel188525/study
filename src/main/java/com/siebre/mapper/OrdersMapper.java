@@ -1,4 +1,4 @@
-package com.siebre.mapping;
+package com.siebre.mapper;
 
 import java.util.List;
 

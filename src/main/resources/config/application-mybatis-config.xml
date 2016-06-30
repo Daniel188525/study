@@ -15,11 +15,13 @@
 			alias="Customer" />
 		<typeAlias type="com.siebre.entity.Orders"
 			alias="Orders" />
+		<typeAlias type="com.siebre.entity.User"
+			alias="User"/>
 	</typeAliases>
-
-	<mappers>
-		<mapper resource="com/siebre/entity/mapper/CustomerMapper.xml" />
-		<mapper resource="com/siebre/entity/mapper/OrdersMapper.xml" />
-	</mappers>
+  
+	<!-- <mappers>
+		<mapper resource="classpath:com/siebre/entity/mapper/CustomerMapper.xml" />
+		<mapper resource="classpath:com/siebre/entity/mapper/OrdersMapper.xml" />
+	</mappers> -->
 
 </configuration>

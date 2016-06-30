@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.siebre.entity.User;
-import com.siebre.mapping.UserMapper;
+import com.siebre.mapper.UserMapper;
 
 @Repository
 public class UserDaoImpl implements UserDao {

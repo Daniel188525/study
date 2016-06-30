@@ -1,3 +1,4 @@
+--mysql 5.7
 CREATE TABLE users(id INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(20), age INT);
 
 CREATE TABLE test(id INT PRIMARY KEY AUTO_INCREMENT, test VARCHAR(20));
@@ -23,3 +24,4 @@ CREATE TABLE t_orders(
 );
 
 ALTER TABLE t_orders ADD CONSTRAINT orders_customer_fk FOREIGN KEY (customer_id) REFERENCES t_customer(id);
+alter table t_orders modify column code varchar(32);
